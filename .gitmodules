@@ -1,0 +1,6 @@
+[submodule "smartcontracts-crowdsale"]
+	path = smartcontracts-crowdsale
+	url = https://github.com/odxnetwork/smartcontracts-crowdsale
+[submodule "smartconracts-token"]
+	path = smartconracts-token
+	url = https://github.com/odxnetwork/smartconracts-token
