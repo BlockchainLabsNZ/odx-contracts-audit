@@ -89,6 +89,7 @@ The audit report is focused on the following key areas - though this is not an e
 <br>
 
 ## Observations
+- In `PrivateSaleRules.sol` there are two functions `releaseLockedTokens()` and `releaseLockedTokensByIndex()` which can only be called by the owner. These could be made public so that anyone could release tokens for other investors. This could potentially save the owner in gas costs, but it is a very minor tweak.
 
 <br>
 
