@@ -83,7 +83,7 @@ A new uint variable `tokenCap` and function `tokenCapReached()` are introduced t
 ```
 
 * CappedMintableToken.sol
-This contract is drived from `MintableToken.sol` and renamed to current name. A mapping `mintAgents` is added for storing mint agents, who have permission of minting tokens. <br>
+This contract is a mixin of `MintableToken.sol` and `CappedToken.sol` and renamed to current name. A mapping `mintAgents` is added for storing mint agent address(crowdsale contract address), which has permission of minting tokens. <br>
 Modifier `hasMintPermission` is replaced by `onlyMintAgent` through out the contract.
 ```
 ...
