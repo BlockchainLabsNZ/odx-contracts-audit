@@ -12,7 +12,26 @@ Solidity contracts were sourced from the public Github repos [odxnetwork/smartco
 The following contract was a subject for static, dynamic and functional analyses:
 
 Contracts
-  - []()
+  - [BasicToken.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/BasicToken.sol)
+  - [ERC20.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/ERC20.sol)
+  - [ODXPrivateSale.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/ODXPrivateSale.sol)
+  - [StandardToken.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/StandardToken.sol)
+  - [BurnableToken.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/BurnableToken.sol)
+  - [ERC20Basic.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/ERC20Basic.sol)
+  - [ODXToken.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/ODXToken.sol)
+  - [TimedCrowdsale.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/TimedCrowdsale.sol)
+  - [CappedCrowdsale.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/CappedCrowdsale.sol)
+  - [Ownable.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/Ownable.sol)
+  - [WhitelistedCrowdsale.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/WhitelistedCrowdsale.sol)
+  - [CappedMintableToken.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/CappedMintableToken.sol)
+  - [MockODXCrowdsale.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/MockODXCrowdsale.sol)
+  - [PrivateSaleRules.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/PrivateSaleRules.sol)
+  - [Crowdsale.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/Crowdsale.sol)
+  - [MockODXPrivateSale.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/MockODXPrivateSale.sol)
+  - [SafeMath.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/SafeMath.sol)
+  - [CrowdsaleNewRules.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/CrowdsaleNewRules.sol)
+  - [ODXCrowdsale.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/ODXCrowdsale.sol)
+  - [StandardBurnableToken.sol](https://github.com/BlockchainLabsNZ/odx-contracts-audit/blob/audit/contracts/StandardBurnableToken.sol)
 <br>
 
 ## Focus areas
