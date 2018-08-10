@@ -49,6 +49,7 @@ The audit report is focused on the following key areas - though this is not an e
 
 - [Dynamic analysis](dynamic-analysis.md)
 - [Test coverage](test-coverage.md)
+- [Framework Comparison](framework-comparison-report.md)
 
 <br>
 
@@ -100,6 +101,10 @@ The audit report is focused on the following key areas - though this is not an e
 <br>
 
 ## Conclusion
+
+The developers demonstrated an understanding of Solidity and smart contract development. We took part in carefully reviewing all source code provided, including static, dynamic, and functional testing methodology.
+
+Overall we consider the resulting contracts following the audit feedback period adequate and have not identified any potential vulnerabilities. This contract has a low level risk of ETH and ODX being hacked or stolen from the inspected contracts.
 
 
 <hr>
