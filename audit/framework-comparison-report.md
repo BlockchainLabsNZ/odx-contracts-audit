@@ -1,12 +1,12 @@
 ## Framework used
 
-Generally, this project is using a solidity framework [openzeppelin-solidity](https://github.com/OpenZeppelin/openzeppelin-solidity).Various commits of versions are used and re-organized. However, that doesn't break the contract's behaviour. <br>
+Generally, this project is using a solidity framework [openzeppelin-solidity](https://github.com/OpenZeppelin/openzeppelin-solidity). Various commits of versions are used and re-organized. However, that doesn't break the contract's behaviour. <br>
 After comparison with commit[9fd61177](https://github.com/OpenZeppelin/openzeppelin-solidity/tree/9fd61177c3046e85fe3a492dd885322da20cc05f), 8/20 of all contracts are fully self-developed. 8/20 of the contracts stay the same features with the framework. See details from the [list](https://gist.github.com/ryu9827/4b702b2a85dcb0cca1c17c668bd73c50). And 4/20 have some changes from the framework.<br>
 
-The contracts having big modifications from original framework are listed below: 
+The contracts having big modifications from original framework are listed below:
 
 * TimedCrowdsale.sol
-A internal function `_preValidatePurchase()` is removed .
+A internal function `_preValidatePurchase()` is removed.
 ```
   /**
    * @dev Extend parent behavior requiring to be within contributing period
@@ -27,7 +27,7 @@ A internal function `_preValidatePurchase()` is removed .
 ```
 
 * Crowdsale.sol
-An uint variable tokensToBeMinted is introduced for updating token amount need to be minted.
+A `uint` variable `tokensToBeMinted` is introduced for updating the token amount need to be minted.
 ```
 ...
   // Amount of tokens to be minted
@@ -49,12 +49,12 @@ An uint variable tokensToBeMinted is introduced for updating token amount need t
 ...
 ```
 
-Two internal functions `_postValidatePurchase` and `_updatePurchasingState` are commented out from the code. Both of them are optional functions. And their usage are commented out as well.
+Two internal functions `_postValidatePurchase` and `_updatePurchasingState` are commented out from the code, both of them are optional functions. Their usage is commented out as well.
 ```
 ...
   //Line 100 - 103
     //_updatePurchasingState(_beneficiary, weiAmount);
-    
+
     _forwardFunds();
     //_postValidatePurchase(_beneficiary, weiAmount);
 ...
@@ -71,7 +71,7 @@ Two internal functions `_postValidatePurchase` and `_updatePurchasingState` are 
 ```
 
 * CappedCrowdsale.sol
-A new uint variable `tokenCap` and function `tokenCapReached()` are introduced to the contract for checking whether the token cap has been reached.
+A new `uint` variable `tokenCap` and function `tokenCapReached()` are introduced to the contract for checking whether the token cap has been reached.
 ```
 ...
 //Line 16
@@ -118,4 +118,4 @@ Modifier `hasMintPermission` is replaced by `onlyMintAgent` through out the cont
 ```
 
 * WhitelistedCrowdsale.sol
-This contract has the same name with the one in openzeppelin, but they are hugely different. We consider it a self-developed contract and analyse it in detail. 
+This contract has the same name with the one in openzeppelin, but they are hugely different. We consider it a self-developed contract and performed a full analysis on it in detail.
