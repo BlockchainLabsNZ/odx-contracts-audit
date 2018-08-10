@@ -75,7 +75,12 @@ The audit report is focused on the following key areas - though this is not an e
 </table>
 
 ### Minor
-- None found
+- **Unnecessary variable assigning** - `Gas optimization` [#L147-L148](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/PrivateSaleRules.sol#L147-L148]) `uint tokenLen = _atokenAmount.length;` is unnecessary. Line 148 is the only place you use `tokenLen` and it can be changed to `require(_atokenAmount.length== lockupTimes.length);` The same thing happens again in line 189 - 191  [View on GitHub](https://github.com/BlockchainLabsNZ/odx-contracts-audit/issues/6)
+- **A internal function is declared but never used** - `Best practice` [#L170](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/PrivateSaleRules.sol#L170]) Function `getTotalTokensPerArray()` is an internal function. It is declared but never used in any contracts.  [View on GitHub](https://github.com/BlockchainLabsNZ/odx-contracts-audit/issues/5)
+- **Code can be simplified** - `Best practice` [#L33-L39](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/PrivateSaleRules.sol#L33-L39]) The if-revert statement can be simplified by using `require()`.  [View on GitHub](https://github.com/BlockchainLabsNZ/odx-contracts-audit/issues/4)
+- **Dead code(PrivateSaleRules.sol, CrowdsaleNewRules.sol)** - `Best practice` [#L69](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/PrivateSaleRules.sol#L69]) [#L153](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/PrivateSaleRules.sol#L153]) [#L98](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/CrowdsaleNewRules.sol#L98]) Dead code should be removed.  [View on GitHub](https://github.com/BlockchainLabsNZ/odx-contracts-audit/issues/3)
+- **@dev should describe function's feature.** - `Correctness` [#L43](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/PrivateSaleRules.sol#L43]) @dev says the constructor 'sets goal, additionalTokenMultiplier and minContribution' but none of them are set. It simply initializes the variable `lockupTime` and token contract address.  [View on GitHub](https://github.com/BlockchainLabsNZ/odx-contracts-audit/issues/2)
+- **Prefer explicit declaration of variable types** - `Best practice` [#L29](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/PrivateSaleRules.sol#L29]) The variable type of `lockedTimeIndex` should be `uint256`. It is recommended to explicitly define your variable types and keep consistency. This confirms your intent and safeguards against a future when the default type changes. Same issue in line 93 [#L93](https://github.com/odxnetwork/smartcontracts-crowdsale/blob/1ee8304974981ad701f6f1e901c8cc9691734808/contracts/PrivateSaleRules.sol#L93]) ... [View on GitHub](https://github.com/BlockchainLabsNZ/odx-contracts-audit/issues/1)
 
 ### Moderate
 - None found
@@ -85,6 +90,7 @@ The audit report is focused on the following key areas - though this is not an e
 
 ### Critical
 - None found
+
 
 <br>
 
