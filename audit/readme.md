@@ -116,6 +116,7 @@ The audit report is focused on the following key areas - though this is not an e
 
 ## Observations
 - In `PrivateSaleRules.sol` there are two functions `releaseLockedTokens()` and `releaseLockedTokensByIndex()` which can only be called by the owner. These could be made public so that anyone could release tokens for other investors. This could potentially save the owner in gas costs, but it is a very minor tweak.
+- `ODXPrivateSale` shows the lockup times as 10 minutes, 15 minutes, and 20 minutes. These seem to short to be the real production values. Is this test code that needs to be updated before deployment?
 
 <br>
 
