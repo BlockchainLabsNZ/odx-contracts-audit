@@ -1,9 +1,9 @@
 pragma solidity ^0.4.23;
 
-import "./ODXToken.sol";
-import "./Ownable.sol";
-import "./ERC20.sol";
-import "./SafeMath.sol";
+import "../../token/contracts/ODXToken.sol";
+import "../../token/contracts/Ownable.sol";
+import "../../token/contracts/ERC20.sol";
+import "../../token/contracts/SafeMath.sol";
 
 /**
  * @title PrivateSaleRules
@@ -16,10 +16,10 @@ contract PrivateSaleRules is Ownable {
   uint256 public weiRaisedDuringPrivateSale;
 
   mapping(address => uint256[]) public lockedTokens;
-
+  
   uint256[] public lockupTimes;
   mapping(address => uint256) public privateSale;
-
+  
   mapping (address => bool) public privateSaleAgents;
 
   // The token being sold
@@ -37,7 +37,7 @@ contract PrivateSaleRules is Ownable {
     }
     _;
   }
-
+  
 
   /**
    * @dev Constructor, sets goal, additionalTokenMultiplier and minContribution
@@ -46,7 +46,7 @@ contract PrivateSaleRules is Ownable {
    */
   constructor(uint256[] _lockupTimes, ODXToken _token) public {
     require(_lockupTimes.length > 0);
-
+    
     lockupTimes = _lockupTimes;
     token = _token;
   }
@@ -58,7 +58,7 @@ contract PrivateSaleRules is Ownable {
     privateSaleAgents[addr] = state;
     emit PrivateSaleAgentChanged(addr, state);
   }
-
+  
   /**
    * @dev Overrides delivery by minting tokens upon purchase.
    * @param _beneficiary Token purchaser
@@ -68,11 +68,11 @@ contract PrivateSaleRules is Ownable {
     require(ODXToken(token).mint(_beneficiary, _tokenAmount));
     //require(MintableToken(token).mint(wallet, _tokenAmount));
   }
-
+  
   /**
    * @dev claim locked tokens only after lockup time.
    */
-
+   
   function claimLockedTokens() public {
     for (uint i=0; i<lockupTimes.length; i++) {
         uint256 lockupTime = lockupTimes[i];
@@ -80,7 +80,7 @@ contract PrivateSaleRules is Ownable {
             uint256 tokens = lockedTokens[msg.sender][i];
             if (tokens>0){
                 lockedTokens[msg.sender][i] = 0;
-                _deliverTokens(msg.sender, tokens);
+                _deliverTokens(msg.sender, tokens);    
             }
         }
     }
@@ -95,11 +95,11 @@ contract PrivateSaleRules is Ownable {
     uint256 tokens = lockedTokens[_beneficiary][_lockedTimeIndex];
     if (tokens>0){
         lockedTokens[_beneficiary][_lockedTimeIndex] = 0;
-        _deliverTokens(_beneficiary, tokens);
+        _deliverTokens(_beneficiary, tokens);    
     }
   }
-
-
+  
+  
   function releaseLockedTokens(address _beneficiary) onlyOwner public {
     for (uint i=0; i<lockupTimes.length; i++) {
         uint256 lockupTime = lockupTimes[i];
@@ -107,13 +107,13 @@ contract PrivateSaleRules is Ownable {
             uint256 tokens = lockedTokens[_beneficiary][i];
             if (tokens>0){
                 lockedTokens[_beneficiary][i] = 0;
-                _deliverTokens(_beneficiary, tokens);
+                _deliverTokens(_beneficiary, tokens);    
             }
         }
     }
-
+    
   }
-
+  
   function tokensReadyForRelease(uint releaseBatch) public view returns (bool) {
       bool forRelease = false;
       uint256 lockupTime = lockupTimes[releaseBatch];
@@ -136,7 +136,7 @@ contract PrivateSaleRules is Ownable {
     }
     return totalTokens;
   }
-
+  
   function getLockedTokensPerUser(address _beneficiary) public view returns (uint256[]) {
     return lockedTokens[_beneficiary];
   }
@@ -146,7 +146,7 @@ contract PrivateSaleRules is Ownable {
       require(_totalContributionAmount > 0);
       uint tokenLen = _atokenAmount.length;
       require(tokenLen == lockupTimes.length);
-
+      
       uint256 existingContribution = privateSale[_beneficiary];
       if (existingContribution > 0){
         revert();
@@ -154,19 +154,19 @@ contract PrivateSaleRules is Ownable {
       }else{
         lockedTokens[_beneficiary] = _atokenAmount;
         privateSale[_beneficiary] = _totalContributionAmount;
-
+          
         weiRaisedDuringPrivateSale = weiRaisedDuringPrivateSale.add(_totalContributionAmount);
-
+          
         emit AddLockedTokens(
           _beneficiary,
           _totalContributionAmount,
           _atokenAmount
         );
-
+          
       }
-
+      
   }
-
+  
   function getTotalTokensPerArray(uint256[] _tokensArray) internal pure returns (uint256) {
       uint256 totalTokensPerArray = 0;
       for (uint i=0; i<_tokensArray.length; i++) {
@@ -177,7 +177,7 @@ contract PrivateSaleRules is Ownable {
 
 
   /**
-   * @dev update locked tokens per user
+   * @dev update locked tokens per user 
    * @param _beneficiary Token purchaser
    * @param _lockedTimeIndex lockupTimes index
    * @param _atokenAmount Amount of tokens to be minted
@@ -189,23 +189,23 @@ contract PrivateSaleRules is Ownable {
       uint tokenLen = lockupTimes.length;
       //_lockedTimeIndex must be valid within the lockuptimes length
       require(_lockedTimeIndex < tokenLen);
-
+      
       uint256 oldContributions = privateSale[_beneficiary];
       //make sure beneficiary has existing contribution otherwise use addPrivateSaleWithMonthlyLockup
       require(oldContributions > 0);
 
       //make sure lockuptime of the index is less than now (tokens were not yet released)
       require(!tokensReadyForRelease(_lockedTimeIndex));
-
+      
       lockedTokens[_beneficiary][_lockedTimeIndex] = _atokenAmount;
-
+      
       //subtract old contribution from weiRaisedDuringPrivateSale
       weiRaisedDuringPrivateSale = weiRaisedDuringPrivateSale.sub(oldContributions);
-
+      
       //add new contribution to weiRaisedDuringPrivateSale
       privateSale[_beneficiary] = _totalContributionAmount;
       weiRaisedDuringPrivateSale = weiRaisedDuringPrivateSale.add(_totalContributionAmount);
-
+            
       emit UpdateLockedTokens(
       _beneficiary,
       _totalContributionAmount,
