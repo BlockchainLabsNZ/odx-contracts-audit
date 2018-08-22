@@ -2,7 +2,7 @@
 <br>
 
 ## Preamble
-This audit report was undertaken by <b>BlockchainLabs.nz</b> for the purpose of providing feedback to <b>Zipper</b>. <br>It has subsequently been shared publicly without any express or implied warranty.
+This audit report was undertaken by <b>BlockchainLabs.nz</b> for the purpose of providing feedback to <b>ODX</b>. <br>It has subsequently been shared publicly without any express or implied warranty.
 
 Solidity contracts were sourced from the public Github repos [odxnetwork/smartconracts-token/](https://github.com/odxnetwork/smartconracts-token/tree/1af271d30db56b913b5c88df21920275259ab057) and [odxnetwork/crowdsale](https://github.com/odxnetwork/smartcontracts-crowdsale/tree/1ee8304974981ad701f6f1e901c8cc9691734808) - we would encourage all community members and token holders to make their own assessment of the contracts.
 
